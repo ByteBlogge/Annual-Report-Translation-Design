@@ -1,0 +1,2 @@
+﻿item_id,chunk_id,status,risk,band,financial,pages,section,reasons,reviewer,note
+rv-d5f548d175,c001-00-annual-report-2023,pending,1.000,review,,1-1,Annual Report 2023,number_drift: 40% of source figures did not match the target | number_mismatch: 2 figure(s) changed value (digit slip or restatement) | unknown_terms: 3 term(s) with no approved translation,,

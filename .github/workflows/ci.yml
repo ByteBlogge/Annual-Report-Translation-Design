@@ -1,0 +1,195 @@
+name: ci
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+# Least privilege: this workflow only reads the repository.
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # The reproducible path: a bare interpreter with only pytest installed.
+  #
+  # This job exists to *assert* the central claim of the project -- that the
+  # core pipeline and the whole test suite run with zero dependencies and zero
+  # credentials. It deliberately does NOT install the project or any extra, and
+  # it fails if a third-party package turns out to be importable, because that
+  # would mean the run was not the dependency-free run it claims to be.
+  # ---------------------------------------------------------------------------
+  core:
+    name: core (stdlib only) · py${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install the test runner, and nothing else
+        run: python -m pip install --upgrade pip pytest
+
+      - name: Guard the zero-dependency claim
+        run: |
+          set -euo pipefail
+          # If any optional backend is importable here, the rest of this job is
+          # not measuring what it says it measures.
+          python - <<'PY'
+          import importlib.util as u, sys
+          optional = ["fastapi", "pymupdf", "fitz", "paddleocr", "openai", "PIL"]
+          found = [m for m in optional if u.find_spec(m) is not None]
+          if found:
+              sys.exit(f"not a dependency-free environment: {found}")
+          print(f"clean: none of {optional} are installed")
+          PY
+
+      - name: Unit + end-to-end suite
+        run: python -m pytest
+
+      - name: The number guard must catch every injected corruption
+        run: |
+          set -euo pipefail
+          for n in 1 2 3 5; do
+            out=$(PYTHONPATH=src python -m art.cli demo --fault "$n")
+            echo "$out" | grep -q "VERDICT: guard caught $n of $n injected corruption" \
+              || { echo "guard failed to catch $n corruption(s)"; echo "$out"; exit 1; }
+            echo "ok: caught $n of $n"
+          done
+
+      - name: A clean run must flag nothing
+        run: |
+          set -euo pipefail
+          out=$(PYTHONPATH=src python -m art.cli demo --fault 0)
+          echo "$out" | grep -q "Nothing flagged" \
+            || { echo "clean run raised a false positive"; echo "$out"; exit 1; }
+
+      - name: The CLI must survive every subcommand
+        run: |
+          set -euo pipefail
+          export PYTHONPATH=src
+          python -m art.cli parse     examples/demo_annual_report.json --tables > /dev/null
+          python -m art.cli chunk     examples/demo_annual_report.json          > /dev/null
+          python -m art.cli inspect   examples/demo_annual_report.json --outline > /dev/null
+          python -m art.cli translate examples/demo_annual_report.json \
+              --parser mock --llm mock --inject-fault 2 --out "$RUNNER_TEMP/run"  > /dev/null
+          python -m art.cli review    "$RUNNER_TEMP/run/review.jsonl"            > /dev/null
+          echo "all subcommands exited 0"
+
+      - name: Artefacts must be written
+        run: |
+          set -euo pipefail
+          d="$RUNNER_TEMP/run"
+          for f in review.jsonl review.md review.html review.csv \
+                   demo-annual-report.report.json target.md; do
+            test -s "$d/$f" || { echo "missing or empty: $f"; ls -la "$d"; exit 1; }
+          done
+          echo "run produced every expected artefact"
+
+  # ---------------------------------------------------------------------------
+  # The production path: the optional extras installed, so the web demo's tests
+  # actually execute instead of skipping, and the server is exercised over HTTP.
+  # ---------------------------------------------------------------------------
+  extras:
+    name: extras (web) · py${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install the web extra + test tooling
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[web,dev]"
+
+      - name: Full suite, with the web tests running rather than skipping
+        run: |
+          set -euo pipefail
+          python -m pytest -q -rs | tee "$RUNNER_TEMP/pytest.log"
+          # The web tests must have executed. If they silently skipped, this job
+          # would be green while covering nothing.
+          if grep -qE "^SKIPPED .*test_web" "$RUNNER_TEMP/pytest.log"; then
+            echo "the web tests skipped; the demo is not actually covered"
+            exit 1
+          fi
+
+      - name: The demo server answers over real HTTP
+        run: |
+          set -euo pipefail
+          export PYTHONPATH=src
+          python -m art.cli web --port 8123 --log-level warning &
+          server=$!
+          trap 'kill $server 2>/dev/null || true' EXIT
+
+          for _ in $(seq 1 40); do
+            if curl -fsS http://127.0.0.1:8123/api/health > /dev/null 2>&1; then
+              break
+            fi
+            sleep 0.5
+          done
+
+          curl -fsS http://127.0.0.1:8123/api/health | grep -q '"ok":true'
+          curl -fsS http://127.0.0.1:8123/ | grep -q 'id="run"'
+          curl -fsS http://127.0.0.1:8123/api/fixtures | grep -q 'demo_annual_report.json'
+
+          curl -fsS -X POST http://127.0.0.1:8123/api/run \
+            -H 'content-type: application/json' \
+            -d '{"fault": 3}' > "$RUNNER_TEMP/run.json"
+
+          grep -q 'caught 3 of 3' "$RUNNER_TEMP/run.json" \
+            || { echo "the HTTP demo did not catch 3 of 3"; cat "$RUNNER_TEMP/run.json"; exit 1; }
+
+          # The live audit is the on-screen version of the core claim.
+          grep -q '"leaks"' "$RUNNER_TEMP/run.json"
+          echo "server smoke test passed"
+
+      - name: A client-supplied path must not escape examples/
+        run: |
+          set -euo pipefail
+          export PYTHONPATH=src
+          python -m art.cli web --port 8124 --log-level warning &
+          server=$!
+          trap 'kill $server 2>/dev/null || true' EXIT
+
+          for _ in $(seq 1 40); do
+            curl -fsS http://127.0.0.1:8124/api/health > /dev/null 2>&1 && break
+            sleep 0.5
+          done
+
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST http://127.0.0.1:8124/api/run \
+            -H 'content-type: application/json' \
+            -d '{"fixture": "../../../etc/passwd"}')
+          test "$code" = "400" \
+            || { echo "path traversal was not rejected (HTTP $code)"; exit 1; }
+          echo "traversal rejected with 400"
+
+  # ---------------------------------------------------------------------------
+  # Style only; never blocks the correctness signal.
+  # ---------------------------------------------------------------------------
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip ruff
+      - run: ruff check src tests

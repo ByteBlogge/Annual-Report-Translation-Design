@@ -1,0 +1,35 @@
+# --- secrets -------------------------------------------------------------
+.env
+*.key
+secrets.json
+
+# --- python -------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.Python
+
+# --- tooling caches -----------------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# --- run artefacts (keep the repo clean; regenerate with `art demo`) -----
+out/
+runs/
+*.log
+
+# --- office / OS cruft --------------------------------------------------
+~$*
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,256 @@
+{
+  "_comment": [
+    "A recorded page layout, in the exact shape MockLayoutAnalyzer replays.",
+    "Structure mirrors what the Qwen2.5-VL prompt returns, so a live run can be",
+    "recorded here (art parse --record) and replayed offline forever after.",
+    "Coordinates are pixels on a 1000x1400 page render at 180 DPI.",
+    "Deliberately included: a two-row merged header, a merged footer row, a",
+    "declared unit note (单位：人民币千元), issuer-supplied bilingual glosses, a",
+    "chart, and a wide statement. These are the cases that break naive parsers."
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "width": 1000.0,
+      "height": 1400.0,
+      "regions": [
+        {
+          "label": "text",
+          "bbox": [60, 90, 940, 150],
+          "text": "Sunrise Cloud Holdings Limited",
+          "font_size": 30.0
+        },
+        {
+          "label": "text",
+          "bbox": [60, 160, 940, 205],
+          "text": "Annual Report 2023",
+          "font_size": 22.0
+        },
+        {
+          "label": "text",
+          "bbox": [60, 240, 940, 330],
+          "text": "The board of directors presents the audited consolidated results of the Group for the year ended 31 December 2023, together with the comparative figures for 2022, prepared under IFRS (国际财务报告准则) as issued by the International Accounting Standards Board.",
+          "font_size": 11.0
+        },
+        {
+          "label": "text",
+          "bbox": [60, 350, 940, 430],
+          "text": "Unless otherwise stated, all amounts are presented in Renminbi. Revenue (营业收入) is recognised when control of the promised goods or services is transferred to the customer. EBITDA (息税折旧摊销前利润) is a non-IFRS measure defined in note 3.",
+          "font_size": 11.0
+        },
+        {
+          "label": "image",
+          "bbox": [700, 1130, 940, 1290],
+          "caption": "",
+          "alt_text": "Company seal and auditor signature block"
+        },
+        {
+          "label": "text",
+          "bbox": [60, 1320, 940, 1360],
+          "text": "This document is a translation sample used for pipeline demonstration purposes only.",
+          "font_size": 9.0
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "width": 1000.0,
+      "height": 1400.0,
+      "regions": [
+        {
+          "label": "text",
+          "bbox": [60, 70, 940, 120],
+          "text": "第一章 财务摘要",
+          "font_size": 19.0
+        },
+        {
+          "label": "text",
+          "bbox": [60, 135, 940, 200],
+          "text": "The Group delivered record revenue in 2023, with growth across all three reporting segments. Gross margin improved by 1.8 percentage points to 42.5% as cloud services scaled.",
+          "font_size": 11.0
+        },
+        {
+          "label": "table",
+          "bbox": [60, 230, 940, 620],
+          "caption": "Financial Summary 主要财务数据",
+          "units": "单位：人民币千元",
+          "cells": [
+            {"text": "Item", "bbox": [60, 230, 380, 310]},
+            {"text": "Year ended 31 December", "bbox": [380, 230, 940, 270]},
+            {"text": "2023", "bbox": [380, 270, 660, 310]},
+            {"text": "2022", "bbox": [660, 270, 940, 310]},
+            {"text": "Revenue", "bbox": [60, 310, 380, 350]},
+            {"text": "1,842,336", "bbox": [380, 310, 660, 350]},
+            {"text": "1,536,204", "bbox": [660, 310, 940, 350]},
+            {"text": "Cost of sales", "bbox": [60, 350, 380, 390]},
+            {"text": "(1,059,343)", "bbox": [380, 350, 660, 390]},
+            {"text": "(918,441)", "bbox": [660, 350, 940, 390]},
+            {"text": "Gross profit", "bbox": [60, 390, 380, 430]},
+            {"text": "783,993", "bbox": [380, 390, 660, 430]},
+            {"text": "617,763", "bbox": [660, 390, 940, 430]},
+            {"text": "Operating profit", "bbox": [60, 430, 380, 470]},
+            {"text": "312,884", "bbox": [380, 430, 660, 470]},
+            {"text": "241,559", "bbox": [660, 430, 940, 470]},
+            {"text": "EBITDA", "bbox": [60, 470, 380, 510]},
+            {"text": "412,006", "bbox": [380, 470, 660, 510]},
+            {"text": "330,118", "bbox": [660, 470, 940, 510]},
+            {"text": "Profit before tax", "bbox": [60, 510, 380, 550]},
+            {"text": "298,415", "bbox": [380, 510, 660, 550]},
+            {"text": "226,740", "bbox": [660, 510, 940, 550]},
+            {"text": "Basic earnings per share", "bbox": [60, 550, 380, 590]},
+            {"text": "1.68", "bbox": [380, 550, 660, 590]},
+            {"text": "1.22", "bbox": [660, 550, 940, 590]},
+            {"text": "Note: EBITDA is a non-IFRS measure. Gross margin is stated as a percentage of revenue.", "bbox": [60, 590, 940, 620]}
+          ]
+        },
+        {
+          "label": "text",
+          "bbox": [60, 660, 940, 730],
+          "text": "The board recommends a final dividend per share (每股股息) of RMB 0.42, subject to approval at the annual general meeting.",
+          "font_size": 11.0
+        },
+        {
+          "label": "chart",
+          "bbox": [60, 770, 940, 1120],
+          "caption": "Revenue by reporting segment (RMB'000)",
+          "chart": {
+            "chart_type": "bar",
+            "series": [
+              {"name": "Cloud services", "points": {"2023": 903144.0, "2022": 660567.0}},
+              {"name": "Enterprise software", "points": {"2023": 529075.0, "2022": 486391.0}},
+              {"name": "Hardware and others", "points": {"2023": 410117.0, "2022": 389246.0}}
+            ],
+            "axis_labels": {
+              "x": ["Cloud services", "Enterprise software", "Hardware and others"],
+              "y": ["0", "200,000", "400,000", "600,000", "800,000", "1,000,000"]
+            },
+            "description": "Grouped bar chart comparing 2023 against 2022 revenue for three reporting segments. Cloud services grew from RMB660,567 thousand to RMB903,144 thousand, enterprise software from RMB486,391 thousand to RMB529,075 thousand, and hardware and others from RMB389,246 thousand to RMB410,117 thousand.",
+            "extraction_method": "fixture",
+            "confidence": 0.88
+          }
+        }
+      ]
+    },
+    {
+      "page": 3,
+      "width": 1000.0,
+      "height": 1400.0,
+      "regions": [
+        {
+          "label": "text",
+          "bbox": [60, 70, 940, 120],
+          "text": "第二章 管理层讨论与分析",
+          "font_size": 19.0
+        },
+        {
+          "label": "text",
+          "bbox": [60, 135, 940, 215],
+          "text": "2.1 Revenue analysis",
+          "heading_level": 2,
+          "font_size": 14.0
+        },
+        {
+          "label": "text",
+          "bbox": [60, 225, 940, 330],
+          "text": "Revenue increased by 19.9% year on year to RMB 1,842,336 thousand, driven primarily by cloud services which grew 36.7%. Working capital management improved, and cash and cash equivalents (现金及现金等价物) rose to RMB 604,882 thousand from RMB 438,110 thousand in 2022.",
+          "font_size": 11.0
+        },
+        {
+          "label": "text",
+          "bbox": [60, 345, 940, 425],
+          "text": "Capital expenditure (资本开支) of RMB 215,400 thousand was directed at data centre capacity. Depreciation and amortisation (折旧及摊销) increased to RMB 99,122 thousand, reflecting the expanded asset base.",
+          "font_size": 11.0
+        },
+        {
+          "label": "text",
+          "bbox": [60, 440, 940, 490],
+          "text": "2.2 Liquidity and gearing",
+          "heading_level": 2,
+          "font_size": 14.0
+        },
+        {
+          "label": "text",
+          "bbox": [60, 500, 940, 600],
+          "text": "Total assets (资产总额) were RMB 4,318,660 thousand at 31 December 2023, and total liabilities (负债总额) were RMB 1,587,224 thousand, giving a gearing ratio (资产负债率) of 36.8%.",
+          "font_size": 11.0
+        },
+        {
+          "label": "table",
+          "bbox": [60, 640, 940, 800],
+          "caption": "Cash flow summary",
+          "units": "单位：人民币千元",
+          "cells": [
+            {"text": "Item", "bbox": [60, 640, 400, 680]},
+            {"text": "2023", "bbox": [400, 640, 670, 680]},
+            {"text": "2022", "bbox": [670, 640, 940, 680]},
+            {"text": "Net cash from operating activities", "bbox": [60, 680, 400, 720]},
+            {"text": "412,880", "bbox": [400, 680, 670, 720]},
+            {"text": "338,145", "bbox": [670, 680, 940, 720]},
+            {"text": "Net cash used in investing activities", "bbox": [60, 720, 400, 760]},
+            {"text": "(215,400)", "bbox": [400, 720, 670, 760]},
+            {"text": "(168,900)", "bbox": [670, 720, 940, 760]},
+            {"text": "Net cash from financing activities", "bbox": [60, 760, 400, 800]},
+            {"text": "(30,708)", "bbox": [400, 760, 670, 800]},
+            {"text": "(85,120)", "bbox": [670, 760, 940, 800]}
+          ]
+        }
+      ]
+    },
+    {
+      "page": 4,
+      "width": 1000.0,
+      "height": 1400.0,
+      "regions": [
+        {
+          "label": "text",
+          "bbox": [60, 70, 940, 120],
+          "text": "附注：报告分部",
+          "font_size": 19.0
+        },
+        {
+          "label": "text",
+          "bbox": [60, 135, 940, 210],
+          "text": "Segment information (分部资料) is presented on the same basis as the internal reports reviewed by the chief operating decision maker. Inter-segment transactions are eliminated on consolidation.",
+          "font_size": 11.0
+        },
+        {
+          "label": "table",
+          "bbox": [60, 245, 940, 720],
+          "caption": "Note 3 — Segment information",
+          "units": "单位：人民币千元",
+          "cells": [
+            {"text": "Segment", "bbox": [60, 245, 320, 285]},
+            {"text": "Revenue", "bbox": [320, 245, 700, 285]},
+            {"text": "Segment result", "bbox": [700, 245, 940, 285]},
+            {"text": "/cont'd", "bbox": [320, 285, 530, 325]},
+            {"text": "2023", "bbox": [530, 285, 700, 325]},
+            {"text": "2023", "bbox": [700, 285, 940, 325]},
+            {"text": "Cloud services", "bbox": [60, 325, 320, 365]},
+            {"text": "903,144", "bbox": [320, 325, 530, 365]},
+            {"text": "660,567", "bbox": [530, 325, 700, 365]},
+            {"text": "188,664", "bbox": [700, 325, 940, 365]},
+            {"text": "Enterprise software", "bbox": [60, 365, 320, 405]},
+            {"text": "529,075", "bbox": [320, 365, 530, 405]},
+            {"text": "486,391", "bbox": [530, 365, 700, 405]},
+            {"text": "92,338", "bbox": [700, 365, 940, 405]},
+            {"text": "Hardware and others", "bbox": [60, 405, 320, 445]},
+            {"text": "410,117", "bbox": [320, 405, 530, 445]},
+            {"text": "389,246", "bbox": [530, 405, 700, 445]},
+            {"text": "31,882", "bbox": [700, 405, 940, 445]},
+            {"text": "Total", "bbox": [60, 445, 320, 485]},
+            {"text": "1,842,336", "bbox": [320, 445, 530, 485]},
+            {"text": "1,536,204", "bbox": [530, 445, 700, 485]},
+            {"text": "312,884", "bbox": [700, 445, 940, 485]},
+            {"text": "Note: segment result is stated before unallocated corporate expenses of RMB 12,469 thousand (2022: RMB 11,325 thousand).", "bbox": [60, 485, 940, 530]}
+          ]
+        },
+        {
+          "label": "text",
+          "bbox": [60, 560, 940, 640],
+          "text": "The comparative figures for 2022 have been restated to reflect the reallocation of shared platform costs between segments. This restatement does not affect total revenue or total segment result.",
+          "font_size": 11.0
+        }
+      ]
+    }
+  ]
+}

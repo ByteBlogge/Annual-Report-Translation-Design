@@ -1,0 +1,1070 @@
+{
+  "doc_id": "demo-annual-report",
+  "summary": {
+    "doc_id": "demo-annual-report",
+    "chunks": 7,
+    "ok_chunks": 6,
+    "failed_chunks": 0,
+    "tables_translated": 3,
+    "label_cells_translated": 23,
+    "numeric_cells_copied": 38,
+    "numbers_source": 75,
+    "numbers_matched": 73,
+    "numbers_mismatched": 2,
+    "numbers_missing": 0,
+    "number_drift": 0.0267,
+    "risk": {
+      "chunks": 7,
+      "bands": {
+        "auto": 5,
+        "review": 1,
+        "watch": 1
+      },
+      "needs_review": 1,
+      "max_risk": 1.0
+    },
+    "review": {
+      "total": 1,
+      "by_status": {
+        "pending": 1,
+        "approved": 0,
+        "rejected": 0,
+        "skipped": 0
+      },
+      "pending": 1,
+      "financial_pending": 0,
+      "max_risk": 1.0
+    },
+    "usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "chunks": 7,
+      "model_calls": 15
+    },
+    "glossary_conflicts": 0
+  },
+  "outline": [
+    "Sunrise Cloud Holdings Limited",
+    "Annual Report 2023",
+    "第一章 财务摘要",
+    "第二章 管理层讨论与分析",
+    "第二章 管理层讨论与分析 > 2.1 Revenue analysis",
+    "第二章 管理层讨论与分析 > 2.2 Liquidity and gearing",
+    "第二章 管理层讨论与分析 > 附注:报告分部"
+  ],
+  "chunks": [
+    {
+      "chunk_id": "c000-00-sunrise-cloud-holdings-l",
+      "section_path": [
+        "Sunrise Cloud Holdings Limited"
+      ],
+      "source_chars": 30,
+      "target_chars": 33,
+      "ok": true,
+      "errors": [],
+      "number_report": {
+        "ok": true,
+        "drift": 0.0,
+        "source_total": 0,
+        "target_total": 0,
+        "matched": 0,
+        "missing": [],
+        "added": [],
+        "mismatched": [],
+        "structural": [],
+        "notes": [],
+        "summary": "source=0 target=0 matched=0 drift=0.000"
+      },
+      "terminology": {
+        "violations_before": [],
+        "violations_after": []
+      },
+      "tables": [],
+      "charts": [],
+      "agents": [
+        {
+          "agent": "body-translator",
+          "action": "translate",
+          "ok": true,
+          "detail": "30 -> 33 chars, 0 markers",
+          "latency_ms": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        }
+      ]
+    },
+    {
+      "chunk_id": "c001-00-annual-report-2023",
+      "section_path": [
+        "Annual Report 2023"
+      ],
+      "source_chars": 600,
+      "target_chars": 565,
+      "ok": false,
+      "errors": [],
+      "number_report": {
+        "ok": false,
+        "drift": 0.4,
+        "source_total": 5,
+        "target_total": 5,
+        "matched": 3,
+        "missing": [],
+        "added": [],
+        "mismatched": [
+          {
+            "source": {
+              "raw": "2022",
+              "value": 2022.0,
+              "dimension": "unknown",
+              "unit": "",
+              "multiplier": 1.0,
+              "base_value": 2022.0,
+              "context": "e figures for 2022, prepared und",
+              "unit_inherited": false
+            },
+            "target": {
+              "raw": "2020",
+              "value": 2020.0,
+              "dimension": "unknown",
+              "unit": "",
+              "multiplier": 1.0,
+              "base_value": 2020.0,
+              "context": "e figures for 2020, prepared und",
+              "unit_inherited": false
+            },
+            "reason": "digit slip (edit distance 1)"
+          },
+          {
+            "source": {
+              "raw": "3",
+              "value": 3.0,
+              "dimension": "unknown",
+              "unit": "",
+              "multiplier": 1.0,
+              "base_value": 3.0,
+              "context": "fined in note 3. This docume",
+              "unit_inherited": false
+            },
+            "target": {
+              "raw": "2",
+              "value": 2.0,
+              "dimension": "unknown",
+              "unit": "",
+              "multiplier": 1.0,
+              "base_value": 2.0,
+              "context": "fined in note 2. This docume",
+              "unit_inherited": false
+            },
+            "reason": "digit slip (edit distance 1)"
+          }
+        ],
+        "structural": [],
+        "notes": [],
+        "summary": "source=5 target=5 matched=3 mismatched=2 drift=0.400"
+      },
+      "terminology": {
+        "violations_before": [
+          {
+            "source_term": "Board of Directors",
+            "expected": "董事会",
+            "context": "Annual Report 2023 The board of directors presents the audited consolidated resul"
+          },
+          {
+            "source_term": "EBIT",
+            "expected": "息税前利润",
+            "context": "ervices is transferred to the customer. EBITDA (息税折旧摊销前利润) is a non-IFRS measure def"
+          }
+        ],
+        "violations_after": []
+      },
+      "tables": [],
+      "charts": [],
+      "agents": [
+        {
+          "agent": "body-translator",
+          "action": "translate",
+          "ok": true,
+          "detail": "591 -> 579 chars, 1 markers",
+          "latency_ms": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        },
+        {
+          "agent": "terminology",
+          "action": "repair",
+          "ok": true,
+          "detail": "applied 2/2 terms",
+          "latency_ms": 1,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        }
+      ]
+    },
+    {
+      "chunk_id": "c002-00-第一章-财务摘要",
+      "section_path": [
+        "第一章 财务摘要"
+      ],
+      "source_chars": 1347,
+      "target_chars": 282,
+      "ok": true,
+      "errors": [],
+      "number_report": {
+        "ok": true,
+        "drift": 0.0,
+        "source_total": 29,
+        "target_total": 30,
+        "matched": 29,
+        "missing": [],
+        "added": [
+          {
+            "raw": "12",
+            "value": 12.0,
+            "dimension": "money",
+            "unit": "千元",
+            "multiplier": 1000.0,
+            "base_value": 12000.0,
+            "context": "截至12月31日止年度",
+            "unit_inherited": true
+          }
+        ],
+        "mismatched": [],
+        "structural": [],
+        "notes": [
+          "units: 单位：人民币千元"
+        ],
+        "summary": "source=29 target=30 matched=29 added=1 drift=0.000"
+      },
+      "terminology": {
+        "violations_before": [
+          {
+            "source_term": "Reporting segment",
+            "expected": "报告分部",
+            "context": "e in 2023, with growth across all three reporting segments. Gross margin improved by 1.8 percenta"
+          },
+          {
+            "source_term": "Gross margin",
+            "expected": "毛利率",
+            "context": "th across all three reporting segments. Gross margin improved by 1.8 percentage points to 42"
+          },
+          {
+            "source_term": "Revenue",
+            "expected": "营业收入",
+            "context": "第一章 财务摘要 The Group delivered record revenue in 2023, with growth across all three r"
+          },
+          {
+            "source_term": "Segment",
+            "expected": "分部",
+            "context": "with growth across all three reporting segments. Gross margin improved by 1.8 percenta"
+          }
+        ],
+        "violations_after": []
+      },
+      "tables": [
+        {
+          "placement": [
+            2,
+            "Financial Summary 主要财务数据"
+          ],
+          "shape": [
+            10,
+            3
+          ],
+          "units_note": "单位：人民币千元",
+          "translated_label_cells": 10,
+          "copied_numeric_cells": 16,
+          "missing_label_cells": [],
+          "number_report": {
+            "ok": true,
+            "drift": 0.0,
+            "source_total": 17,
+            "target_total": 18,
+            "matched": 17,
+            "missing": [],
+            "added": [
+              {
+                "raw": "12",
+                "value": 12.0,
+                "dimension": "money",
+                "unit": "千元",
+                "multiplier": 1000.0,
+                "base_value": 12000.0,
+                "context": "截至12月31日止年度",
+                "unit_inherited": true
+              }
+            ],
+            "mismatched": [],
+            "structural": [],
+            "notes": [
+              "units: 单位：人民币千元"
+            ],
+            "summary": "source=17 target=18 matched=17 added=1 drift=0.000"
+          },
+          "steps": [
+            {
+              "agent": "table-translator",
+              "action": "translate-labels",
+              "ok": true,
+              "detail": "10/10 labels returned",
+              "latency_ms": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0
+            }
+          ]
+        }
+      ],
+      "charts": [
+        {
+          "caption": "营业收入 by reporting segment (RMB'000)",
+          "description": "[译]Grouped bar chart comparing 2023 against 2022 revenue for three reporting segments. Cloud services grew from RMB660,567 thousand to RMB903,144 thousand, enterprise software from RMB486,391 thousand to RMB529,075 thousand, and hardware and others from RMB389,246 thousand to RMB410,117 thousand.",
+          "points": 6,
+          "method": "fixture"
+        }
+      ],
+      "agents": [
+        {
+          "agent": "table-translator",
+          "action": "translate-labels",
+          "ok": true,
+          "detail": "10/10 labels returned",
+          "latency_ms": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        },
+        {
+          "agent": "chart-translator",
+          "action": "translate-charts",
+          "ok": true,
+          "detail": "1/1 charts",
+          "latency_ms": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        },
+        {
+          "agent": "body-translator",
+          "action": "translate",
+          "ok": true,
+          "detail": "304 -> 307 chars, 2 markers",
+          "latency_ms": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        },
+        {
+          "agent": "terminology",
+          "action": "repair",
+          "ok": true,
+          "detail": "applied 4/4 terms",
+          "latency_ms": 1,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        }
+      ]
+    },
+    {
+      "chunk_id": "c003-00-第二章-管理层讨论与分析",
+      "section_path": [
+        "第二章 管理层讨论与分析"
+      ],
+      "source_chars": 12,
+      "target_chars": 15,
+      "ok": true,
+      "errors": [],
+      "number_report": {
+        "ok": true,
+        "drift": 0.0,
+        "source_total": 0,
+        "target_total": 0,
+        "matched": 0,
+        "missing": [],
+        "added": [],
+        "mismatched": [],
+        "structural": [],
+        "notes": [],
+        "summary": "source=0 target=0 matched=0 drift=0.000"
+      },
+      "terminology": {
+        "violations_before": [],
+        "violations_after": []
+      },
+      "tables": [],
+      "charts": [],
+      "agents": [
+        {
+          "agent": "body-translator",
+          "action": "translate",
+          "ok": true,
+          "detail": "12 -> 15 chars, 0 markers",
+          "latency_ms": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        }
+      ]
+    },
+    {
+      "chunk_id": "c004-00-2-1-revenue-analysis",
+      "section_path": [
+        "第二章 管理层讨论与分析",
+        "2.1 Revenue analysis"
+      ],
+      "source_chars": 481,
+      "target_chars": 440,
+      "ok": true,
+      "errors": [],
+      "number_report": {
+        "ok": true,
+        "drift": 0.0,
+        "source_total": 9,
+        "target_total": 9,
+        "matched": 9,
+        "missing": [],
+        "added": [],
+        "mismatched": [],
+        "structural": [],
+        "notes": [],
+        "summary": "source=9 target=9 matched=9 drift=0.000"
+      },
+      "terminology": {
+        "violations_before": [
+          {
+            "source_term": "Working capital",
+            "expected": "营运资金",
+            "context": "ily by cloud services which grew 36.7%. Working capital management improved, and cash and cash"
+          }
+        ],
+        "violations_after": []
+      },
+      "tables": [],
+      "charts": [],
+      "agents": [
+        {
+          "agent": "body-translator",
+          "action": "translate",
+          "ok": true,
+          "detail": "481 -> 451 chars, 0 markers",
+          "latency_ms": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        },
+        {
+          "agent": "terminology",
+          "action": "repair",
+          "ok": true,
+          "detail": "applied 1/1 terms",
+          "latency_ms": 1,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        }
+      ]
+    },
+    {
+      "chunk_id": "c005-00-2-2-liquidity-and-gearin",
+      "section_path": [
+        "第二章 管理层讨论与分析",
+        "2.2 Liquidity and gearing"
+      ],
+      "source_chars": 471,
+      "target_chars": 186,
+      "ok": true,
+      "errors": [],
+      "number_report": {
+        "ok": true,
+        "drift": 0.0,
+        "source_total": 14,
+        "target_total": 14,
+        "matched": 14,
+        "missing": [],
+        "added": [],
+        "mismatched": [],
+        "structural": [],
+        "notes": [
+          "units: 单位：人民币千元"
+        ],
+        "summary": "source=14 target=14 matched=14 drift=0.000"
+      },
+      "terminology": {
+        "violations_before": [],
+        "violations_after": []
+      },
+      "tables": [
+        {
+          "placement": [
+            3,
+            "Cash flow summary"
+          ],
+          "shape": [
+            4,
+            3
+          ],
+          "units_note": "单位：人民币千元",
+          "translated_label_cells": 4,
+          "copied_numeric_cells": 8,
+          "missing_label_cells": [],
+          "number_report": {
+            "ok": true,
+            "drift": 0.0,
+            "source_total": 8,
+            "target_total": 8,
+            "matched": 8,
+            "missing": [],
+            "added": [],
+            "mismatched": [],
+            "structural": [],
+            "notes": [
+              "units: 单位：人民币千元"
+            ],
+            "summary": "source=8 target=8 matched=8 drift=0.000"
+          },
+          "steps": [
+            {
+              "agent": "table-translator",
+              "action": "translate-labels",
+              "ok": true,
+              "detail": "4/4 labels returned",
+              "latency_ms": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0
+            }
+          ]
+        }
+      ],
+      "charts": [],
+      "agents": [
+        {
+          "agent": "table-translator",
+          "action": "translate-labels",
+          "ok": true,
+          "detail": "4/4 labels returned",
+          "latency_ms": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        },
+        {
+          "agent": "body-translator",
+          "action": "translate",
+          "ok": true,
+          "detail": "194 -> 186 chars, 1 markers",
+          "latency_ms": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        }
+      ]
+    },
+    {
+      "chunk_id": "c006-00-附注-报告分部",
+      "section_path": [
+        "第二章 管理层讨论与分析",
+        "附注:报告分部"
+      ],
+      "source_chars": 1250,
+      "target_chars": 394,
+      "ok": true,
+      "errors": [],
+      "number_report": {
+        "ok": true,
+        "drift": 0.0,
+        "source_total": 18,
+        "target_total": 18,
+        "matched": 18,
+        "missing": [],
+        "added": [],
+        "mismatched": [],
+        "structural": [],
+        "notes": [
+          "units: 单位：人民币千元"
+        ],
+        "summary": "source=18 target=18 matched=18 drift=0.000"
+      },
+      "terminology": {
+        "violations_before": [
+          {
+            "source_term": "Revenue",
+            "expected": "营业收入",
+            "context": "This restatement does not affect total revenue or total segment result."
+          }
+        ],
+        "violations_after": []
+      },
+      "tables": [
+        {
+          "placement": [
+            4,
+            "Note 3 — Segment information"
+          ],
+          "shape": [
+            7,
+            4
+          ],
+          "units_note": "单位：人民币千元",
+          "translated_label_cells": 9,
+          "copied_numeric_cells": 14,
+          "missing_label_cells": [],
+          "number_report": {
+            "ok": true,
+            "drift": 0.0,
+            "source_total": 17,
+            "target_total": 17,
+            "matched": 17,
+            "missing": [],
+            "added": [],
+            "mismatched": [],
+            "structural": [],
+            "notes": [
+              "units: 单位：人民币千元"
+            ],
+            "summary": "source=17 target=17 matched=17 drift=0.000"
+          },
+          "steps": [
+            {
+              "agent": "table-translator",
+              "action": "translate-labels",
+              "ok": true,
+              "detail": "9/9 labels returned",
+              "latency_ms": 0,
+              "prompt_tokens": 0,
+              "completion_tokens": 0
+            }
+          ]
+        }
+      ],
+      "charts": [],
+      "agents": [
+        {
+          "agent": "table-translator",
+          "action": "translate-labels",
+          "ok": true,
+          "detail": "9/9 labels returned",
+          "latency_ms": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        },
+        {
+          "agent": "body-translator",
+          "action": "translate",
+          "ok": true,
+          "detail": "394 -> 397 chars, 1 markers",
+          "latency_ms": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        },
+        {
+          "agent": "terminology",
+          "action": "repair",
+          "ok": true,
+          "detail": "applied 1/1 terms",
+          "latency_ms": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        }
+      ]
+    }
+  ],
+  "risk_scores": [
+    {
+      "value": 0.02,
+      "threshold": 0.45,
+      "band": "auto",
+      "needs_review": false,
+      "hard_fail": false,
+      "reasons": [
+        {
+          "name": "unknown_terms",
+          "contribution": 0.02,
+          "detail": "1 term(s) with no approved translation",
+          "severity": "info"
+        }
+      ]
+    },
+    {
+      "value": 1.0,
+      "threshold": 0.45,
+      "band": "review",
+      "needs_review": true,
+      "hard_fail": false,
+      "reasons": [
+        {
+          "name": "number_drift",
+          "contribution": 0.4,
+          "detail": "40% of source figures did not match the target",
+          "severity": "critical"
+        },
+        {
+          "name": "number_mismatch",
+          "contribution": 0.55,
+          "detail": "2 figure(s) changed value (digit slip or restatement)",
+          "severity": "critical"
+        },
+        {
+          "name": "unknown_terms",
+          "contribution": 0.06,
+          "detail": "3 term(s) with no approved translation",
+          "severity": "info"
+        }
+      ]
+    },
+    {
+      "value": 0.205,
+      "threshold": 0.3,
+      "band": "watch",
+      "needs_review": false,
+      "hard_fail": false,
+      "reasons": [
+        {
+          "name": "number_added",
+          "contribution": 0.125,
+          "detail": "1 figure(s) appear in the target only (fabrication, or a reformatted date / cross-reference)",
+          "severity": "warn"
+        },
+        {
+          "name": "unknown_terms",
+          "contribution": 0.08,
+          "detail": "4 term(s) with no approved translation",
+          "severity": "info"
+        }
+      ]
+    },
+    {
+      "value": 0.0,
+      "threshold": 0.3,
+      "band": "auto",
+      "needs_review": false,
+      "hard_fail": false,
+      "reasons": []
+    },
+    {
+      "value": 0.0,
+      "threshold": 0.3,
+      "band": "auto",
+      "needs_review": false,
+      "hard_fail": false,
+      "reasons": []
+    },
+    {
+      "value": 0.0512,
+      "threshold": 0.3,
+      "band": "auto",
+      "needs_review": false,
+      "hard_fail": false,
+      "reasons": [
+        {
+          "name": "numeric_density",
+          "contribution": 0.0312,
+          "detail": "numeric density 14.2% (dense figure section)",
+          "severity": "info"
+        },
+        {
+          "name": "unknown_terms",
+          "contribution": 0.02,
+          "detail": "1 term(s) with no approved translation",
+          "severity": "info"
+        }
+      ]
+    },
+    {
+      "value": 0.1725,
+      "threshold": 0.3,
+      "band": "auto",
+      "needs_review": false,
+      "hard_fail": false,
+      "reasons": [
+        {
+          "name": "grid_hole",
+          "contribution": 0.1125,
+          "detail": "1 uncovered grid slot(s): a cell may be missing",
+          "severity": "warn"
+        },
+        {
+          "name": "table_warning",
+          "contribution": 0.04,
+          "detail": "1 parser warning(s) on tables",
+          "severity": "info"
+        },
+        {
+          "name": "unknown_terms",
+          "contribution": 0.02,
+          "detail": "1 term(s) with no approved translation",
+          "severity": "info"
+        }
+      ]
+    }
+  ],
+  "features": [
+    {
+      "chunk_id": "c000-00-sunrise-cloud-holdings-l",
+      "section_path": [
+        "Sunrise Cloud Holdings Limited"
+      ],
+      "pages": [
+        1,
+        1
+      ],
+      "is_financial_summary": false,
+      "number_drift": 0.0,
+      "numbers_missing": 0,
+      "numbers_mismatched": 0,
+      "numbers_added": 0,
+      "number_structural": 0,
+      "table_count": 0,
+      "table_merge_conflicts": 0,
+      "table_holes": 0,
+      "table_warnings": 0,
+      "untranslated_label_cells": 0,
+      "chart_count": 0,
+      "charts_unresolved": 0,
+      "numeric_density": 0.0,
+      "glossary_terms": 0,
+      "unknown_terms": 1,
+      "terminology_remaining": 0,
+      "errors": []
+    },
+    {
+      "chunk_id": "c001-00-annual-report-2023",
+      "section_path": [
+        "Annual Report 2023"
+      ],
+      "pages": [
+        1,
+        1
+      ],
+      "is_financial_summary": false,
+      "number_drift": 0.4,
+      "numbers_missing": 0,
+      "numbers_mismatched": 2,
+      "numbers_added": 0,
+      "number_structural": 0,
+      "table_count": 0,
+      "table_merge_conflicts": 0,
+      "table_holes": 0,
+      "table_warnings": 0,
+      "untranslated_label_cells": 0,
+      "chart_count": 0,
+      "charts_unresolved": 0,
+      "numeric_density": 0.025,
+      "glossary_terms": 10,
+      "unknown_terms": 3,
+      "terminology_remaining": 0,
+      "errors": []
+    },
+    {
+      "chunk_id": "c002-00-第一章-财务摘要",
+      "section_path": [
+        "第一章 财务摘要"
+      ],
+      "pages": [
+        2,
+        2
+      ],
+      "is_financial_summary": true,
+      "number_drift": 0.0,
+      "numbers_missing": 0,
+      "numbers_mismatched": 0,
+      "numbers_added": 1,
+      "number_structural": 0,
+      "table_count": 1,
+      "table_merge_conflicts": 0,
+      "table_holes": 0,
+      "table_warnings": 0,
+      "untranslated_label_cells": 0,
+      "chart_count": 1,
+      "charts_unresolved": 0,
+      "numeric_density": 0.1128,
+      "glossary_terms": 21,
+      "unknown_terms": 4,
+      "terminology_remaining": 0,
+      "errors": []
+    },
+    {
+      "chunk_id": "c003-00-第二章-管理层讨论与分析",
+      "section_path": [
+        "第二章 管理层讨论与分析"
+      ],
+      "pages": [
+        3,
+        3
+      ],
+      "is_financial_summary": true,
+      "number_drift": 0.0,
+      "numbers_missing": 0,
+      "numbers_mismatched": 0,
+      "numbers_added": 0,
+      "number_structural": 0,
+      "table_count": 0,
+      "table_merge_conflicts": 0,
+      "table_holes": 0,
+      "table_warnings": 0,
+      "untranslated_label_cells": 0,
+      "chart_count": 0,
+      "charts_unresolved": 0,
+      "numeric_density": 0.0,
+      "glossary_terms": 3,
+      "unknown_terms": 0,
+      "terminology_remaining": 0,
+      "errors": []
+    },
+    {
+      "chunk_id": "c004-00-2-1-revenue-analysis",
+      "section_path": [
+        "第二章 管理层讨论与分析",
+        "2.1 Revenue analysis"
+      ],
+      "pages": [
+        3,
+        3
+      ],
+      "is_financial_summary": true,
+      "number_drift": 0.0,
+      "numbers_missing": 0,
+      "numbers_mismatched": 0,
+      "numbers_added": 0,
+      "number_structural": 0,
+      "table_count": 0,
+      "table_merge_conflicts": 0,
+      "table_holes": 0,
+      "table_warnings": 0,
+      "untranslated_label_cells": 0,
+      "chart_count": 0,
+      "charts_unresolved": 0,
+      "numeric_density": 0.0873,
+      "glossary_terms": 10,
+      "unknown_terms": 0,
+      "terminology_remaining": 0,
+      "errors": []
+    },
+    {
+      "chunk_id": "c005-00-2-2-liquidity-and-gearin",
+      "section_path": [
+        "第二章 管理层讨论与分析",
+        "2.2 Liquidity and gearing"
+      ],
+      "pages": [
+        3,
+        3
+      ],
+      "is_financial_summary": true,
+      "number_drift": 0.0,
+      "numbers_missing": 0,
+      "numbers_mismatched": 0,
+      "numbers_added": 0,
+      "number_structural": 0,
+      "table_count": 1,
+      "table_merge_conflicts": 0,
+      "table_holes": 0,
+      "table_warnings": 0,
+      "untranslated_label_cells": 0,
+      "chart_count": 0,
+      "charts_unresolved": 0,
+      "numeric_density": 0.1423,
+      "glossary_terms": 8,
+      "unknown_terms": 1,
+      "terminology_remaining": 0,
+      "errors": []
+    },
+    {
+      "chunk_id": "c006-00-附注-报告分部",
+      "section_path": [
+        "第二章 管理层讨论与分析",
+        "附注:报告分部"
+      ],
+      "pages": [
+        4,
+        4
+      ],
+      "is_financial_summary": true,
+      "number_drift": 0.0,
+      "numbers_missing": 0,
+      "numbers_mismatched": 0,
+      "numbers_added": 0,
+      "number_structural": 0,
+      "table_count": 1,
+      "table_merge_conflicts": 0,
+      "table_holes": 1,
+      "table_warnings": 1,
+      "untranslated_label_cells": 0,
+      "chart_count": 0,
+      "charts_unresolved": 0,
+      "numeric_density": 0.1128,
+      "glossary_terms": 9,
+      "unknown_terms": 1,
+      "terminology_remaining": 0,
+      "errors": []
+    }
+  ],
+  "review_queue": [
+    {
+      "item_id": "rv-d5f548d175",
+      "chunk_id": "c001-00-annual-report-2023",
+      "section_path": [
+        "Annual Report 2023"
+      ],
+      "pages": [
+        1,
+        1
+      ],
+      "is_financial_summary": false,
+      "risk": {
+        "value": 1.0,
+        "threshold": 0.45,
+        "band": "review",
+        "needs_review": true,
+        "hard_fail": false,
+        "reasons": [
+          {
+            "name": "number_drift",
+            "contribution": 0.4,
+            "detail": "40% of source figures did not match the target",
+            "severity": "critical"
+          },
+          {
+            "name": "number_mismatch",
+            "contribution": 0.55,
+            "detail": "2 figure(s) changed value (digit slip or restatement)",
+            "severity": "critical"
+          },
+          {
+            "name": "unknown_terms",
+            "contribution": 0.06,
+            "detail": "3 term(s) with no approved translation",
+            "severity": "info"
+          }
+        ]
+      },
+      "features": {
+        "chunk_id": "c001-00-annual-report-2023",
+        "section_path": [
+          "Annual Report 2023"
+        ],
+        "pages": [
+          1,
+          1
+        ],
+        "is_financial_summary": false,
+        "number_drift": 0.4,
+        "numbers_missing": 0,
+        "numbers_mismatched": 2,
+        "numbers_added": 0,
+        "number_structural": 0,
+        "table_count": 0,
+        "table_merge_conflicts": 0,
+        "table_holes": 0,
+        "table_warnings": 0,
+        "untranslated_label_cells": 0,
+        "chart_count": 0,
+        "charts_unresolved": 0,
+        "numeric_density": 0.025,
+        "glossary_terms": 10,
+        "unknown_terms": 3,
+        "terminology_remaining": 0,
+        "errors": []
+      },
+      "source_text": "Annual Report 2023\n\nThe board of directors presents the audited consolidated results of the Group for the year ended 31 December 2023, together with the comparative figures for 2022, prepared under IFRS (国际财务报告准则) as issued by the International Accounting Standards Board.\n\nUnless otherwise stated, all amounts are presented in Renminbi. Revenue (营业收入) is recognised when control of the promised goods or services is transferred to the customer. EBITDA (息税折旧摊销前利润) is a non-IFRS measure defined in note 3.\n\n[IMAGE]\n\nThis document is a translation sample used for pipeline demonstration purposes only.",
+      "target_text": "年度报告 2023\n\nThe 董事会 presents the audited consolidated results of the Group for the year ended 31 December 2023, together with the comparative figures for 2020, prepared under IFRS (国际财务报告准则) as issued by the International Accounting Standards Board.\n\nUnless otherwise stated, all amounts are presented in Renminbi. 营业收入 (营业收入) is recognised when control of the promised goods or services is transferred to the customer. 息税前利润DA (息税折旧摊销前利润) is a non-IFRS measure defined in note 2.\n\nThis document is a translation sample used for pipeline demonstration purposes only.",
+      "tables": [],
+      "status": "pending",
+      "created_at": "2026-09-22T22:40:52",
+      "decided_at": "",
+      "reviewer": "",
+      "note": ""
+    }
+  ],
+  "glossary_conflicts": []
+}

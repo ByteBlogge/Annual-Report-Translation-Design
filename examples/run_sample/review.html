@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<title>Human review sheet</title>
+<style>
+  :root { color-scheme: light dark; --fg:#1a1a1a; --bg:#ffffff; --muted:#6b7280;
+           --line:#e5e7eb; --card:#f9fafb; --crit:#b91c1c; --warn:#b45309; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg:#e8e8e8; --bg:#141414; --muted:#9ca3af; --line:#2e2e2e;
+             --card:#1c1c1c; --crit:#f87171; --warn:#fbbf24; }
+  }
+  body { font: 15px/1.6 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+          color: var(--fg); background: var(--bg); margin: 0 auto; max-width: 1080px; padding: 32px 20px; }
+  h1 { font-size: 1.5rem; } h2 { font-size: 1.05rem; margin: 0; display: inline; }
+  h3 { font-size: .82rem; text-transform: uppercase; letter-spacing: .06em;
+        color: var(--muted); margin: 18px 0 6px; }
+  .item { border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px;
+           margin-bottom: 20px; background: var(--card); }
+  .item header { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; }
+  .badge { font-size: .72rem; padding: 2px 8px; border-radius: 999px;
+            background: var(--line); text-transform: uppercase; letter-spacing: .05em; }
+  .band-review .badge, .band-blocked .badge { background: var(--crit); color: #fff; }
+  .band-watch .badge { background: var(--warn); color: #fff; }
+  .risk, .meta, .muted, footer { color: var(--muted); font-size: .84rem; }
+  .fin { font-size: .72rem; border: 1px solid var(--crit); color: var(--crit);
+          padding: 1px 7px; border-radius: 999px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 760px) { .pair { grid-template-columns: 1fr; } }
+  pre { white-space: pre-wrap; word-break: break-word; background: var(--bg);
+         border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px;
+         font-size: .84rem; max-height: 340px; overflow: auto; margin: 0; }
+  ul { padding-left: 20px; } ul.reasons li { margin-bottom: 4px; }
+  .tw { overflow-x: auto; }
+  table.art-table { border-collapse: collapse; width: 100%; font-size: .82rem; }
+  table.art-table th, table.art-table td { border: 1px solid var(--line);
+        padding: 5px 8px; text-align: left; vertical-align: top; }
+  table.art-table th { background: var(--line); font-weight: 600; }
+  table.art-table .art-units { display: none; }
+  .summary { border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin-bottom: 24px; }
+</style></head>
+<body>
+<h1>Human review sheet</h1>
+<div class="summary">
+  <p><strong>1</strong> flagged chunk(s) &middot;
+     <strong>1</strong> pending &middot;
+     <strong>0</strong> touching financial statements &middot;
+     highest risk <strong>1.00</strong></p>
+  <p class="muted">Ordered by risk. Figures were verified by deterministic source/target
+     comparison, not by the model assessing its own output.</p>
+</div>
+
+<section class="item band-review">
+  <header>
+    <h2>c001-00-annual-report-2023</h2>
+    <span class="badge">review</span>
+    <span class="risk">risk 1.00 / threshold 0.45</span>
+    
+  </header>
+  <p class="meta">Annual Report 2023
+     &middot; pages 1–1</p>
+  <h3>Why it was flagged</h3>
+  <ul class="reasons"><li><code>+0.55</code> <strong>number_mismatch</strong> — 2 figure(s) changed value (digit slip or restatement)</li><li><code>+0.40</code> <strong>number_drift</strong> — 40% of source figures did not match the target</li><li><code>+0.06</code> <strong>unknown_terms</strong> — 3 term(s) with no approved translation</li></ul>
+  <h3>Figures</h3>
+  <ul><li>2 figure(s) changed value</li></ul>
+  <div class="pair">
+    <div><h3>Source</h3><pre>Annual Report 2023
+
+The board of directors presents the audited consolidated results of the Group for the year ended 31 December 2023, together with the comparative figures for 2022, prepared under IFRS (国际财务报告准则) as issued by the International Accounting Standards Board.
+
+Unless otherwise stated, all amounts are presented in Renminbi. Revenue (营业收入) is recognised when control of the promised goods or services is transferred to the customer. EBITDA (息税折旧摊销前利润) is a non-IFRS measure defined in note 3.
+
+[IMAGE]
+
+This document is a translation sample used for pipeline demonstration purposes only.</pre></div>
+    <div><h3>Target</h3><pre>年度报告 2023
+
+The 董事会 presents the audited consolidated results of the Group for the year ended 31 December 2023, together with the comparative figures for 2020, prepared under IFRS (国际财务报告准则) as issued by the International Accounting Standards Board.
+
+Unless otherwise stated, all amounts are presented in Renminbi. 营业收入 (营业收入) is recognised when control of the promised goods or services is transferred to the customer. 息税前利润DA (息税折旧摊销前利润) is a non-IFRS measure defined in note 2.
+
+This document is a translation sample used for pipeline demonstration purposes only.</pre></div>
+  </div>
+  
+  <footer class="muted">item_id rv-d5f548d175 &middot; status pending</footer>
+</section>
+
+</body></html>

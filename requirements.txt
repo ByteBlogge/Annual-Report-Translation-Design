@@ -1,0 +1,9 @@
+# Runtime dependencies for the CORE pipeline: none.
+#
+# This file is intentionally empty of hard requirements -- see the dependency
+# policy note in pyproject.toml. Install an extra instead:
+#
+#   pip install -e ".[all]"      # everything (VLM + PDF + web + dev)
+#   pip install -e ".[llm,pdf]"  # just the production backends
+#
+# The offline demo and the full test suite need nothing but the stdlib.
