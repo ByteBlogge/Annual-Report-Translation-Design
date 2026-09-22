@@ -203,7 +203,7 @@ class TestTableAtomicity:
         """Splitting a table splits its header from its figures. Never do it."""
         blocks = [TextBlock(text="第一章 财务摘要", heading_level=1)]
         for i in range(4):
-            blocks.append(TextBlock(text="Prose paragraph number %d. " % i + "word " * 60))
+            blocks.append(TextBlock(text=f"Prose paragraph number {i}. " + "word " * 60))
             blocks.append(simple_table(f"Table {i}"))
 
         document = doc_from(blocks)

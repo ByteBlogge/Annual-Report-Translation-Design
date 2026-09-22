@@ -240,7 +240,7 @@ class ReviewQueue:
         return sorted(self, key=lambda i: i.risk_value, reverse=descending)
 
     def stats(self) -> dict[str, Any]:
-        counts: dict[str, int] = {status: 0 for status in STATUSES}
+        counts: dict[str, int] = dict.fromkeys(STATUSES, 0)
         for item in self:
             counts[item.status] = counts.get(item.status, 0) + 1
         pending = [i for i in self if i.status == "pending"]

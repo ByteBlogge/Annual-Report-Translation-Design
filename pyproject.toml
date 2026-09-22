@@ -63,7 +63,11 @@ pythonpath = ["src"]
 markers = [
     "network: tests that hit a real external API (deselected by default)",
 ]
-filterwarnings = ["error::DeprecationWarning"]
+# Turn deprecation warnings into errors ONLY for our own package. Third-party
+# stacks (fastapi/starlette/anyio/httpx) emit DeprecationWarnings at import or
+# inside TestClient that are outside our control; making those fatal would break
+# the suite the moment a transitive dependency deprecates an alias.
+filterwarnings = ["error::DeprecationWarning:^art"]
 
 [tool.ruff]
 line-length = 100
@@ -76,10 +80,6 @@ ignore = [
     # Line length is enforced by review, not by a hard wrap: the pipeline has
     # data tables and Chinese literals where breaking a line hurts readability.
     "E501",
-    # ``isinstance(x, (A, B))`` is kept over ``A | B``: the tuple form is the
-    # more widely recognised idiom and reads better in the layout code, which
-    # chains several of these.
-    "UP038",
     # ``close()`` is a deliberate no-op on the analyzer and LLM protocols. Can't
     # be @abstractmethod -- the offline backends have nothing to release, and
     # forcing them to implement an empty method is worse than the empty default.
