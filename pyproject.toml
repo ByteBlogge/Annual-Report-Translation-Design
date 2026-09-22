@@ -9,7 +9,7 @@ description = "A verifiable multi-agent pipeline for translating layout-heavy an
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-authors = [{ name = "TODO: your name" }]
+authors = [{ name = "Peng Kelong" }]
 keywords = ["llm", "agent", "multimodal", "document-ai", "translation", "annual-report"]
 classifiers = [
     "Programming Language :: Python :: 3",
