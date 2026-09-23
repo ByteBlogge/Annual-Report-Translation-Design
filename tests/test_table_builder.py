@@ -2,7 +2,7 @@
 
 These are the tests that back the claim "merged cells are handled". Each one
 fails loudly if the reconstruction is broken, which is the only way the claim is
-worth anything in an interview.
+worth anything at all.
 """
 
 from __future__ import annotations

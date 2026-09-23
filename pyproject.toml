@@ -22,9 +22,9 @@ classifiers = [
 # ---------------------------------------------------------------------------
 # The core pipeline (parser structure logic, chunker, number guard, HITL,
 # CLI, mock backends, entire test suite) runs on the Python standard library
-# ONLY. That is a deliberate engineering constraint: the interviewer can clone
-# the repo and run `python -m art demo` + `pytest` with zero installs, which is
-# exactly the "verifiable" property we are optimising for.
+# ONLY. That is a deliberate engineering constraint: anyone can clone the repo
+# and run `python -m art demo` + `pytest` with zero installs, which is exactly
+# the "verifiable" property we are optimising for.
 #
 # Everything below is an OPTIONAL extra for production backends.
 dependencies = []

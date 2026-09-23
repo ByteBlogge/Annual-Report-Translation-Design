@@ -2,7 +2,7 @@
 
 Why an explicit Protocol instead of calling the VLM inline
 ----------------------------------------------------------
-The interviewer's real question is "does this work, or does it only work on
+The question that matters is "does this work, or does it only work on
 your one demo PDF?". The honest answer requires the pipeline to be runnable
 against a *deterministic* backend, so that every downstream claim (grid
 reconstruction, chunk boundaries, number guard, risk scoring) can be tested

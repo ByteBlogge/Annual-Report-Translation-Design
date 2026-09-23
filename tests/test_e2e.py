@@ -1,4 +1,4 @@
-"""End-to-end: the whole pipeline, and the two claims worth an interview.
+"""End-to-end: the whole pipeline, and the two claims that matter most.
 
 Everything else in this repo is scaffolding for these assertions:
 

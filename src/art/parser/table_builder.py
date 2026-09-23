@@ -30,7 +30,7 @@ deterministic, so we compute it:
    ``data-rs``/``data-cs`` alongside standard ``rowspan``/``colspan``, and
    ``from_html`` reads either. That makes ``from_html(to_html(t)) == t`` a
    property we can assert in a test -- which is how you demonstrate that
-   layout survives the pipeline instead of asking the interviewer to trust you.
+   layout survives the pipeline instead of asking a reader to trust you.
 
 What still needs the model
 --------------------------

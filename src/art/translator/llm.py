@@ -17,7 +17,7 @@ Three things matter here, and none of them is "call an API".
    model that returns ``"[译] ..."`` proves nothing. A deterministic model that
    can be *told to corrupt exactly one financial figure* lets us demonstrate
    that the number guard actually catches hallucination -- which is the single
-   claim an interviewer most wants to see evidence for. See
+   claim most worth having evidence for. See
    :class:`MockLLM`'s ``inject_number_drift``.
 """
 

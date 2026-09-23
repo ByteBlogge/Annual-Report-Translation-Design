@@ -26,7 +26,7 @@ A typed SDO gives us three things we can actually test and demo:
 Serialisation is hand-rolled (not ``dataclasses.asdict``) so that ``BBox``
 becomes a compact ``[x0, y0, x1, y1]`` list and enums become their values.
 The wire format is intentionally boring and diff-friendly, because the JSON is
-a deliverable the interviewer will read.
+a deliverable a human reviewer will read.
 """
 
 from __future__ import annotations

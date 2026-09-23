@@ -138,7 +138,7 @@ unique sentinel figure in the source and fails if it appears in *any* prompt.
 
 ## 4. Verification matrix
 
-The six requirements from the brief, each with the command that demonstrates it and
+Six required capabilities, each with the command that demonstrates it and
 the tests that hold it in place. Run any row yourself; nothing here needs a network.
 
 | # | Requirement | See it with | Held by |
@@ -470,65 +470,7 @@ adversarial style of the suite: none of these were visible from the outside.
 
 ---
 
-## 12. Interview Q&A
-
-Questions this implementation invites, and the answers the code supports.
-
-**"How do I know your number guard actually works, rather than passing because
-nothing was ever wrong?"**
-`art demo --fault N` corrupts exactly `N` figures in the mock model's output, and the
-guard must report all `N`. `tests/test_demo.py` asserts this for `N = 1..6` on the
-built-in page and `1..9` on the recorded fixture, and `test_e2e.py` cross-checks that
-the number of *applied* corruptions equals the number requested — so the verdict
-cannot be satisfied by an injector that silently did nothing. A separate test asserts
-the verdict *can* fail, so the check is not vacuous.
-
-**"Why bother with the SDO? Couldn't you pass HTML around?"**
-Because auditability needs addresses. A finding has to point at a rectangle on a
-page: `(page, block, row, col)`. HTML can render a table but cannot tell you *which
-figure* in *which cell* disagree, and it has no representation for a hole or a merge
-conflict. The SDO is what lets the guard, the risk policy and the reviewer all read
-the same fact.
-
-**"What happens when the VLM's boxes are wrong?"**
-The tolerance is scaled to the narrowest cell, so jitter is absorbed; geometry
-overrides hints; and unreconcilable input yields a degraded table plus a warning
-rather than a confident guess. `test_table_builder.py` includes a jitter-recovery
-test and a geometry-beats-bad-hints test.
-
-**"Two figures disagree — which one is right?"**
-Neither is assumed right; the source is authoritative. The guard reports a
-mismatch with the source value, the target value and the mechanism (unit change,
-digit slip, dropped unit note), and the risk score routes the chunk to a human. The
-pipeline never silently picks a winner.
-
-**"How would this scale to a 300-page report?"**
-Chunking is section-driven so work parallelises per chunk, and the number guard and
-risk scoring are linear passes. The parts that resist parallelism are the ones that
-must be document-global — glossary construction and number comparison — and they run
-once, over cheap data, rather than per chunk.
-
-**"You re-run a document every week. What stops the reviewer seeing the same items
-forever?"**
-`item_id` is derived from `chunk_id`, so a re-run refreshes the existing entry rather
-than appending a new one — which is what makes the queue diffable at all. A decision
-is carried over only while the evidence is unchanged; if the output moved, the item
-reopens as pending and the previous decision is kept as an audit note. The test suite
-covers both halves, because the first version got this wrong: random ids meant every
-re-run duplicated the queue and orphaned the decisions recorded against it.
-
-**"What would you do differently with more time?"**
-Three things, in order of how much they would improve the product: (1) make the
-number guard's unit model currency-aware rather than scale-only, since a
-cross-currency restatement is the one mismatch it would currently over-report;
-(2) persist glossary approvals in the same review queue as translations, so
-terminology decisions accumulate across *documents* and not just within one;
-(3) add a projection step that renders the translated SDO back to PDF, which is the
-last mile from "correct" to "deliverable".
-
----
-
-## 13. Status and limitations
+## 12. Status and limitations
 
 - **Backends for real documents are implemented but not exercised against a
   production corpus.** `qwen-vl`, `paddle` and PDF rasterisation are wired and
@@ -544,7 +486,7 @@ last mile from "correct" to "deliverable".
 - **Chinese↔English is the developed pair.** The CJK handling is real work; the code
   is structured for other pairs but they are untested.
 
-## 14. Development
+## 13. Development
 
 ```bash
 pip install -e ".[dev]"     # pytest, pytest-cov, ruff, httpx (for TestClient)
