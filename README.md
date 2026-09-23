@@ -12,8 +12,8 @@ model translates *labels and prose*; every number is copied by code from the sou
 document and compared against the source afterwards by a deterministic guard. If a
 figure moves, the chunk goes to a human queue with the evidence attached.
 
-This repository is the implementation, not a proposal. Everything below is
-runnable from a fresh clone with **no install step and no credentials**.
+This repository is a runnable implementation. Everything below works from a
+fresh clone with **no install step and no credentials**.
 
 ---
 
