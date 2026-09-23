@@ -101,7 +101,7 @@ flowchart TD
 
 所以一份译后报表的数字列不是"被检查过"，而是**根本不可能出错**——因为没有任何模型输出包含它们。守卫于是覆盖剩下那片更有意思的表面：嵌在正文里的数字和图表描述，那里数字真的在一句被模型改写过的话里。
 
-这个性质是被**直接断言**的，不是假设的——见 `tests/test_e2e.py::test_numbers_are_kept_away_from_the_model`，它往源文档里种一个唯一的哨兵数字，只要它出现在*任何*提示词里就失败。
+这个性质是被**直接断言**的，不是假设的——见 `tests/test_e2e.py::TestNumbersAreKeptAwayFromTheModel` 下的 `test_a_unique_figure_never_appears_in_any_prompt`，它往源文档里种一个唯一的哨兵数字，只要它出现在*任何*提示词里就失败。
 
 ---
 

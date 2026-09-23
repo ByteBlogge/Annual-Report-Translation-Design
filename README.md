@@ -131,8 +131,9 @@ then covers the remaining, more interesting surface: figures embedded in prose a
 chart descriptions, where a number genuinely is inside a sentence the model rewrote.
 
 This property is asserted directly, not assumed — see
-`tests/test_e2e.py::test_numbers_are_kept_away_from_the_model`, which plants a
-unique sentinel figure in the source and fails if it appears in *any* prompt.
+`tests/test_e2e.py::TestNumbersAreKeptAwayFromTheModel`, whose
+`test_a_unique_figure_never_appears_in_any_prompt` plants a unique sentinel
+figure in the source and fails if it appears in *any* prompt.
 
 ---
 
